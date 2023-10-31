@@ -123,7 +123,7 @@ export default {
 					if (value.success) {
 						cached = { expires_at: Date.now() + 1000 * 60 * 60 * 24 * 7, value: value.player! }
 					} else {
-						cached = { expires_at: Date.now() + 1000 * 60 * 60 * 12, value: {} }
+						cached = { expires_at: Date.now() + 1000 * 60 * 60 * 12, value: cached?.value || {} }
 					}
 					await env.KV.put(`${uuid}:hypixel.net`, JSON.stringify(cached))
 				}
